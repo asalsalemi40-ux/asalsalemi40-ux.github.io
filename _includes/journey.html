@@ -1,0 +1,28 @@
+<div class="walk" data-walk>
+  <div class="walk-stage">
+    <div class="walk-media">
+      {%- for s in page.journey %}
+      <img src="{{ s.shot | relative_url }}" alt=""{% if s.screen %} class="screen"{% endif %} loading="lazy">
+      {%- endfor %}
+    </div>
+    <div class="walk-info" aria-live="polite">
+      <p class="walk-count"></p>
+      <h3></h3>
+      <p class="walk-text"></p>
+      <dl class="walk-lanes">
+        <div><dt>Touchpoint</dt><dd class="walk-touchpoint"></dd></div>
+        <div class="backstage"><dt>Behind the scenes</dt><dd class="walk-backstage"></dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="walk-track">
+    <ol class="journey">
+      {%- for s in page.journey %}
+      {%- assign row = page.blueprint | where: "stage", s.stage | first %}
+      <li data-stage="{{ s.stage }}" data-touchpoint="{{ row.touchpoint }}" data-backstage="{{ row.backstage }}"><h3>{{ s.title }}</h3><p>{{ s.text }}</p></li>
+      {%- endfor %}
+    </ol>
+    <input type="range" min="1" max="{{ page.journey.size }}" step="1" value="1" aria-label="Step through the service journey">
+  </div>
+  <p class="walk-note">Drag along the journey or use the arrow keys: the screen shows what the user sees, the lanes what runs behind it.</p>
+</div>

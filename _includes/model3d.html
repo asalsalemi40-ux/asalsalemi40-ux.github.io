@@ -1,0 +1,13 @@
+<figure class="model3d" data-model="{{ include.model }}">
+  <div class="model3d-stage" style="--ratio: {{ include.ratio | default: '16 / 10' }}" tabindex="0" aria-label="{{ include.alt | escape }}. Drag or use the arrow keys to turn it.">
+    <img class="model3d-poster" src="{{ include.poster | relative_url }}" alt="{{ include.alt | escape }}" loading="lazy">
+    <span class="tag left">Drag to turn</span>
+  </div>
+  {% if include.from %}<div class="model3d-range" hidden>
+    <span>{{ include.from }}</span>
+    <input type="range" min="0" max="100" value="{{ include.value | default: 0 }}" aria-label="{{ include.from }} to {{ include.to | downcase }}">
+    <span>{{ include.to }}</span>
+  </div>{% endif %}
+  {% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
+</figure>
+<script type="module" src="{{ '/assets/js/model3d.js' | relative_url }}"></script>

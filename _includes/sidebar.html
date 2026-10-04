@@ -1,0 +1,32 @@
+<!-- Sidebar -->
+  {% assign projects = site.projects | sort: 'order' %}
+  <div id="sidebar">
+    <div class="inner">
+        <nav id="menu">
+          <header class="major"><h2>Menu</h2></header>
+          <ul>
+            <li><a href="{{ '/' | relative_url }}">Home</a></li>
+            <li>
+              <span class="opener{% if page.collection == 'projects' %} active{% endif %}">Work</span>
+              <ul>
+                {% for p in projects %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
+              </ul>
+            </li>
+            <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+            <li><a href="{{ site.portfolio_pdf | relative_url }}">Portfolio (PDF)</a></li>
+            {% if site.cv_pdf %}<li><a href="{{ site.cv_pdf | relative_url }}">CV (PDF)</a></li>{% endif %}
+          </ul>
+        </nav>
+        <section>
+          <header class="major"><h2>Get in touch</h2></header>
+          <p>{{ site.contact_blurb }}</p>
+          <ul class="contact">
+            <li class="fa-envelope-o"><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            <li class="fa-map-marker">{{ site.location }}</li>
+          </ul>
+        </section>
+        <footer id="footer">
+          <p class="copyright">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://andrewbanchi.ch">Andrew Banchich</a>.</p>
+        </footer>
+    </div>
+  </div>

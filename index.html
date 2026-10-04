@@ -1,0 +1,34 @@
+---
+layout: default
+---
+<section id="work">
+	<header class="major"><h2>Selected work</h2></header>
+	<div class="work-list">
+		{% assign projects = site.projects | sort: 'order' %}
+		{% for p in projects %}
+		<article class="work-item">
+			<a class="work-media{% if p.card_fit == 'contain' %} light{% endif %}" href="{{ p.url | relative_url }}" aria-label="{{ p.title }}">
+				<img src="{{ p.card | relative_url }}" alt="{{ p.card_alt }}"{% if p.card_fit == 'contain' %} class="contain"{% endif %} loading="lazy">
+				<img class="alt{% if p.alt_fit == 'contain' %} contain{% endif %}" src="{{ p.card_alt_img | relative_url }}" alt="" loading="lazy">
+				<span class="peek">{{ p.peek }}</span>
+			</a>
+			<div class="work-text">
+				<p class="discipline">{{ p.discipline }}</p>
+				<h3><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+				<p>{{ p.summary }}</p>
+				<p class="context">{{ p.context }}</p>
+				<a class="text-link" href="{{ p.url | relative_url }}">View project</a>
+			</div>
+		</article>
+		{% endfor %}
+	</div>
+</section>
+
+<section class="cta">
+	<h2>Open to master's study and design roles</h2>
+	<p>I'm looking for master's study and design roles in service design, UX and product design.</p>
+	<ul class="actions">
+		<li><a href="mailto:{{ site.email }}" class="button special">Email me</a></li>
+		<li><a href="{{ site.portfolio_pdf | relative_url }}" class="button">Portfolio (PDF)</a></li>
+	</ul>
+</section>

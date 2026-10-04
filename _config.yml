@@ -1,0 +1,39 @@
+# Site settings
+title: Asal Salemi
+subtitle: Industrial Designer
+tagline: I design products and the services around them.
+description: Portfolio of Asal Salemi, an industrial designer working across service, UX and product design.
+email: asalsalemi40@gmail.com
+location: Tehran, Iran
+contact_blurb: I'm looking for master's study and design roles in service design, UX and product design.
+portfolio_pdf: /assets/files/Asal_Salemi_Portfolio.pdf
+cv_pdf: # optional, e.g. /assets/files/Asal_Salemi_CV.pdf
+
+# Address of the site. Leave baseurl empty if the repository is named <username>.github.io.
+# If the repository has another name (e.g. "portfolio"), set baseurl: "/portfolio".
+baseurl: ""
+url: "https://asalsalemi40-ux.github.io" # used for link previews when shared
+
+# Optional profiles: paste a full URL to show the icon in the header
+linkedin_url:
+behance_url:
+instagram_url:
+
+# Build settings
+markdown: kramdown
+collections:
+  projects:
+    output: true
+    permalink: /work/:name/
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+exclude:
+  - README.md
+  - LICENSE.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

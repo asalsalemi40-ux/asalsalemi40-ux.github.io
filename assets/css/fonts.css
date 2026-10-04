@@ -1,0 +1,7 @@
+/* Fonts are self-hosted so the site loads anywhere (Open Sans, Roboto Slab: SIL OFL / Apache 2.0). */
+@font-face { font-family: 'Open Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('../fonts/open-sans-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Open Sans'; font-style: italic; font-weight: 400; font-display: swap; src: url('../fonts/open-sans-latin-400-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Open Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('../fonts/open-sans-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Open Sans'; font-style: italic; font-weight: 600; font-display: swap; src: url('../fonts/open-sans-latin-600-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Roboto Slab'; font-style: normal; font-weight: 400; font-display: swap; src: url('../fonts/roboto-slab-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Roboto Slab'; font-style: normal; font-weight: 700; font-display: swap; src: url('../fonts/roboto-slab-latin-700-normal.woff2') format('woff2'); }

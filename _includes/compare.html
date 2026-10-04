@@ -1,0 +1,9 @@
+<div class="compare{% if include.framed %} framed{% endif %}" style="--ratio: {{ include.ratio | default: '1 / 1' }}">
+  <img src="{{ include.right | relative_url }}" alt="{{ include.right_alt }}" loading="lazy">
+  <img class="top" src="{{ include.left | relative_url }}" alt="{{ include.left_alt }}" loading="lazy">
+  <span class="tag left">{{ include.left_label | default: 'Sketch' }}</span>
+  <span class="tag right">{{ include.right_label | default: 'Render' }}</span>
+  <span class="divider" aria-hidden="true"></span>
+  <input type="range" min="0" max="100" value="50" aria-label="Drag to compare the {{ include.left_label | default: 'sketch' | downcase }} and the {{ include.right_label | default: 'render' | downcase }}">
+  <span class="knob" aria-hidden="true">Drag</span>
+</div>

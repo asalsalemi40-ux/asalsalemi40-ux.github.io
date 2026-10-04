@@ -1,0 +1,104 @@
+---
+layout: null
+permalink: /print/
+---
+{%- comment -%}
+  Source of the PDF portfolio: A4 landscape sheets built from the same data as the site.
+  Print it to assets/files/Asal_Salemi_Portfolio.pdf (see README).
+{%- endcomment -%}
+{%- assign projects = site.projects | sort: 'order' -%}
+{%- assign about = site.pages | where: "name", "about.md" | first -%}
+{%- assign year = site.time | date: '%Y' -%}
+{%- capture link -%}{{ site.url | remove: 'https://' }}{%- endcapture -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ site.title }}, Portfolio {{ year }}</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/print.css' | relative_url }}">
+</head>
+<body class="print">
+
+<section class="sheet cover">
+  <div class="cover-text">
+    <h1>{{ site.title }}</h1>
+    <p class="tagline">{{ site.tagline }}</p>
+    <div class="cover-meta">
+      <p><strong>Portfolio, {{ year }}</strong><br>{{ site.subtitle }}</p>
+      <p><a href="mailto:{{ site.email }}">{{ site.email }}</a><br><a href="{{ site.url }}">{{ link }}</a><br>{{ site.location }}</p>
+    </div>
+  </div>
+  <div class="cover-images">
+    {%- for p in projects %}
+    <img src="{{ p.card | relative_url }}" alt="">
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="sheet about">
+  <div class="about-text">
+    <h2>About</h2>
+    <p class="lead">{{ about.lead }}</p>
+    {{ about.content }}
+  </div>
+  <div class="contents">
+    <h2>Contents</h2>
+    <ol>
+      {%- for p in projects %}
+      <li><img src="{{ p.card | relative_url }}" alt=""><span><strong>{{ p.title }}</strong>{{ p.discipline }}. {{ p.summary }}</span><b>{{ forloop.index0 | times: 2 | plus: 3 }}</b></li>
+      {%- endfor %}
+    </ol>
+  </div>
+  <footer><span><strong>{{ site.title }}</strong></span><span>2</span></footer>
+</section>
+
+{%- for p in projects %}
+{%- assign n = forloop.index0 | times: 2 | plus: 3 %}
+{%- assign cols = p.print.columns | default: 3 %}
+{%- assign rows = p.print.images.size | plus: cols | minus: 1 | divided_by: cols %}
+
+<section class="sheet intro">
+  <div class="intro-text">
+    <p class="discipline">{{ p.discipline }}</p>
+    <h2>{{ p.title }}</h2>
+    <p class="lead">{{ p.lead }}</p>
+    <dl class="facts">{% for f in p.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}</dl>
+    {%- for note in p.print.notes %}
+    <h3>{{ note.title }}</h3>
+    {{ note.text | markdownify }}
+    {%- endfor %}
+  </div>
+  <figure class="intro-hero{% if p.hero_ratio %} whole{% endif %}"><img src="{{ p.hero | relative_url }}" alt=""></figure>
+  <footer><span><strong>{{ site.title }}</strong> {{ p.title }}</span><span>{{ n }}</span></footer>
+</section>
+
+<section class="sheet process{% if p.journey %} service{% endif %}">
+  <header>
+    <div><p class="discipline">{{ p.title }}</p><h2>{{ p.print.heading }}</h2></div>
+    <p>{{ p.print.intro }}</p>
+  </header>
+  {%- if p.journey %}
+  <ol class="journey">{% for s in p.journey %}<li><h3>{{ s.title }}</h3><p>{{ s.text }}</p></li>{% endfor %}</ol>
+  {%- endif %}
+  <div class="grid" style="--cols: {{ cols }}; --rows: {{ rows }}">
+    {%- for im in p.print.images %}
+    <figure><div class="frame"><img src="{{ im.src | relative_url }}" alt=""></div><figcaption>{{ im.caption }}</figcaption></figure>
+    {%- endfor %}
+  </div>
+  {%- if p.blueprint %}{% include blueprint.html rows=p.blueprint %}{% endif %}
+  <footer><span><strong>{{ site.title }}</strong> {{ p.title }}</span><span>{{ n | plus: 1 }}</span></footer>
+</section>
+{%- endfor %}
+
+<section class="sheet back">
+  <div>
+    <h2>{{ site.title }}</h2>
+    <p><a href="mailto:{{ site.email }}">{{ site.email }}</a><br><a href="{{ site.url }}">{{ link }}</a><br>{{ site.location }}</p>
+    <p class="note">{{ site.contact_blurb }}</p>
+  </div>
+</section>
+
+</body>
+</html>

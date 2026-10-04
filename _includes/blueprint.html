@@ -1,0 +1,10 @@
+<div class="blueprint-wrap">
+<table class="blueprint">
+<thead><tr><th>Stage</th><th>User action</th><th>Touchpoint</th><th>Behind the scenes</th></tr></thead>
+<tbody>
+{%- for r in include.rows %}
+<tr><td data-label="Stage">{{ r.stage }}</td><td data-label="User action">{{ r.action }}</td><td data-label="Touchpoint">{{ r.touchpoint }}</td><td data-label="Behind the scenes">{{ r.backstage }}</td></tr>
+{%- endfor %}
+</tbody>
+</table>
+</div>

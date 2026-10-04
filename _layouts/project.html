@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP | html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en">
+{% include head.html %}
+<body>
+    <div id="wrapper">
+        <div id="main">
+            <div class="inner">
+                {% include header.html %}
+                <article class="project">
+                    <header class="project-head">
+                        <p class="discipline">{{ page.discipline }}</p>
+                        <h1>{{ page.title }}</h1>
+                        <p class="lead">{{ page.lead }}</p>
+                    </header>
+                    <figure class="project-hero"><img src="{{ page.hero | relative_url }}" alt="{{ page.hero_alt }}"{% if page.hero_ratio %} style="aspect-ratio: {{ page.hero_ratio }}; object-fit: contain; background: #fff"{% endif %}></figure>
+                    <dl class="facts">
+                        {% for f in page.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
+                    </dl>
+                    {{ content }}
+                    {% assign projects = site.projects | sort: 'order' %}
+                    {% for p in projects %}{% if p.url == page.url %}{% assign idx = forloop.index0 %}{% endif %}{% endfor %}
+                    {% assign next_i = idx | plus: 1 %}{% if next_i >= projects.size %}{% assign next_i = 0 %}{% endif %}
+                    {% assign next = projects[next_i] %}
+                    <a class="next-project" href="{{ next.url | relative_url }}"><span><small>Next project</small><strong>{{ next.title }}</strong></span><img src="{{ next.card | relative_url }}" alt="" loading="lazy"></a>
+                </article>
+            </div>
+        </div>
+        {% include sidebar.html %}
+    </div>
+    {% include footer.html %}
+</body>
+</html>

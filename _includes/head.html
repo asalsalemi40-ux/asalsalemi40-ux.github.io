@@ -1,0 +1,23 @@
+<head>
+  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}, {{ site.subtitle }}{% endif %}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% assign desc = page.summary | default: site.description %}
+  <meta name="description" content="{{ desc | strip_html | escape }}" />
+  <meta name="author" content="{{ site.title }}" />
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}" />
+  <meta property="og:description" content="{{ desc | strip_html | escape }}" />
+  <meta property="og:type" content="website" />
+  {% if site.url and site.url != "" %}
+  {% assign og_image = page.card | default: '/assets/images/home-banner.jpg' %}
+  <meta property="og:image" content="{{ og_image | absolute_url }}" />
+  <link rel="canonical" href="{{ page.url | absolute_url }}" />
+  {% endif %}
+  <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}" />
+  <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}" />
+  <!--[if lte IE 8]><script src="{{ '/assets/js/ie/html5shiv.js' | relative_url }}"></script><![endif]-->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}" />
+  <!--[if lte IE 9]><link rel="stylesheet" href="{{ '/assets/css/ie9.css' | relative_url }}" /><![endif]-->
+  <!--[if lte IE 8]><link rel="stylesheet" href="{{ '/assets/css/ie8.css' | relative_url }}" /><![endif]-->
+</head>
