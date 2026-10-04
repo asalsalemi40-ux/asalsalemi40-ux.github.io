@@ -10,4 +10,4 @@
   </div>{% endif %}
   {% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
 </figure>
-<script type="module" src="{{ '/assets/js/model3d.js' | relative_url }}"></script>
+<script type="module" src="{{ '/assets/js/model3d.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

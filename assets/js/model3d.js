@@ -40,6 +40,8 @@ async function mount(figure) {
   renderer.toneMapping = THREE.NeutralToneMapping;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFShadowMap;
+  // Sized inline so the canvas can never push the stage larger, even without the stylesheet.
+  Object.assign(renderer.domElement.style, { position: 'absolute', inset: '0', width: '100%', height: '100%' });
   stage.append(renderer.domElement);
 
   const scene = new THREE.Scene();
