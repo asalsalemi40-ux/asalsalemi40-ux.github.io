@@ -25,7 +25,7 @@ To add a project, copy one of the files in `_projects/`, give it a new file name
 | 3D model with a slider | `{% include model3d.html model="..." poster="..." from="..." to="..." %}`: each model is built in `assets/js/models/<model>.js` with three.js |
 | Service walk-through | `{% include journey.html %}`, filled from `journey:` and `blueprint:` |
 
-Without JavaScript or WebGL, each piece falls back to its images.
+Each piece shows what it does once, when it first comes into view, and then waits for the visitor: any touch, click or key stops the demonstration. Visitors who ask their system for reduced motion don't see it. Without JavaScript or WebGL, each piece falls back to its images.
 
 ## Update the PDF
 

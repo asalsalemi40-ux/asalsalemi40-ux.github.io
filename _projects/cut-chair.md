@@ -7,9 +7,9 @@ context: Individual university project.
 card: /assets/images/work/cut-model2.jpg
 card_fit: contain
 card_alt: Render of a chair whose backrest is a clapperboard, with a side pocket holding a tablet and headphones
-card_alt_img: /assets/images/work/cut-sketch.jpg
+card_alt_img: /assets/images/work/cut-model1.jpg
 alt_fit: contain
-peek: Hand sketch
+peek: Model one
 hero: /assets/images/work/cut-model2.jpg
 hero_ratio: 1063 / 841
 hero_alt: Render of the clapperboard chair
@@ -36,14 +36,12 @@ print:
       caption: "Starting point: the clapperboard."
     - src: /assets/images/work/cut-model1.jpg
       caption: "Model one: 560 × 520 × 870 mm, seat at 450 mm, folds to 180 mm."
-    - src: /assets/images/work/cut-sketch.jpg
-      caption: "Model two: first hand sketch."
+    - src: /assets/images/work/cut-model2.jpg
+      caption: "Model two: backrest panel and tablet pocket."
     - src: /assets/images/work/cut-materials.jpg
       caption: "Materials: aluminium, recycled fabric, bamboo."
     - src: /assets/images/work/cut-render.jpg
       caption: "The chair on set."
-    - src: /assets/images/work/cut-model2.jpg
-      caption: "Model two: backrest panel and tablet pocket."
 ---
 
 <div class="chapter">
@@ -60,10 +58,9 @@ Use the clapperboard itself as the form, turn the chair into a small workstation
 </div>
 </div>
 
-<div class="gallery three">
-{% include fig.html src="/assets/images/work/cut-clapper.jpg" alt="Drawing of a film clapperboard" caption="Starting point: the clapperboard." ratio="734 / 684" %}
-{% include fig.html src="/assets/images/work/cut-model1.jpg" alt="Front, side and folded views of a director's chair with dimensions" caption="Model one: a director's chair, 560 × 520 × 870 mm, seat at 450 mm, folding to 180 mm." ratio="1123 / 589" %}
-{% include fig.html src="/assets/images/work/cut-sketch.jpg" alt="Hand sketch of the clapperboard chair with a side bag" caption="Model two, first hand sketch with the side pocket." ratio="676 / 515" %}
+<div class="gallery">
+{% include fig.html src="/assets/images/work/cut-clapper.jpg" alt="Drawing of a film clapperboard" caption="Starting point: the clapperboard." ratio="3 / 2" %}
+{% include fig.html src="/assets/images/work/cut-model1.jpg" alt="Front, side and folded views of a director's chair with dimensions" caption="Model one: a director's chair, 560 × 520 × 870 mm, seat at 450 mm, folding to 180 mm." ratio="3 / 2" %}
 </div>
 
 <div class="chapter">

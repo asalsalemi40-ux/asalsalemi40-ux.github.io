@@ -4,6 +4,7 @@ import * as THREE from './vendor/three.min.js';
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+const { smootherstep } = THREE.MathUtils;
 
 // Vertical span and the radius around the turning axis, so the result holds at every angle.
 function extent(object) {
@@ -25,7 +26,8 @@ async function mount(figure) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   const { default: build } = await import(`./models/${figure.dataset.model}.js`);
   const model = build();
-  const view = Object.assign({ yaw: 0.6, pitch: 0.3, minPitch: 0, maxPitch: 0.8, zoom: 1, light: 1.6, environment: 0.75 }, model.view);
+  // swing: how far the demonstration turns the model before running the slider.
+  const view = Object.assign({ yaw: 0.6, pitch: 0.3, minPitch: 0, maxPitch: 0.8, zoom: 1, light: 1.6, environment: 0.75, swing: 0.8 }, model.view);
 
   // Light and shadow sizes follow the largest state the slider can reach.
   let size = 0;
@@ -187,6 +189,19 @@ async function mount(figure) {
   }
 
   requestAnimationFrame(() => { draw(); stage.classList.add('is-live'); });
+
+  // The demonstration: turn out and back, then the slider to its far end, a pause, and home again.
+  const slides = range && model.set, from = slider(), to = from < 0.5 ? 1 : 0, home = yaw;
+  window.demoOnce?.(figure, 4600, (p) => {
+    const t = slides ? from + (to - from) * Math.min(smootherstep(p, 0.3, 0.55), 1 - smootherstep(p, 0.75, 1)) : from;
+    if (slides) {
+      range.value = t * 100;
+      model.set(t);
+    }
+    yaw = (model.yawFor ? model.yawFor(t) : home) + view.swing * Math.sin(Math.PI * smootherstep(p, 0, 0.32));
+    fit();
+    request();
+  });
 }
 
 const watcher = new IntersectionObserver((entries) => {

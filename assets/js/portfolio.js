@@ -1,10 +1,58 @@
-/* Page-load reveal, compare sliders, service walk-through and image lightbox (no dependencies). */
+/* Page-load reveal, compare sliders, service walk-through, image lightbox, and the one-time
+   demonstration of each interactive piece (no dependencies). */
 (function () {
   var root = document.documentElement;
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var smooth = function (x) { return x * x * x * (x * (x * 6 - 15) + 10); };
   if (document.getElementById('banner')) {
     root.classList.add('reveal');
     window.addEventListener('load', function () { setTimeout(function () { root.classList.add('revealed'); }, 150); });
   }
+
+  // Visitors miss what a piece can do until they see it move, so each piece shows it once, when it
+  // is first in view. A touch, click or key on the piece stops the demonstration where it is.
+  // frame(p) draws progress p from 0 to 1 and ends in the piece's starting state. Also used by model3d.js.
+  function demoOnce(piece, ms, frame) {
+    if (reduced || !window.IntersectionObserver) return;
+    var timer = 0, raf = 0, start = 0, over = false;
+    var cues = ['pointerdown', 'keydown', 'focusin'];
+    var imgs = Array.prototype.slice.call(piece.querySelectorAll('img'));
+    // Screen readers should not announce every step of the demonstration.
+    var live = Array.prototype.slice.call(piece.querySelectorAll('[aria-live]')).map(function (el) { return [el, el.getAttribute('aria-live')]; });
+    function stop() {
+      over = true;
+      clearTimeout(timer);
+      cancelAnimationFrame(raf);
+      seen.disconnect();
+      cues.forEach(function (t) { piece.removeEventListener(t, stop, true); });
+      live.forEach(function (l) { l[0].setAttribute('aria-live', l[1]); });
+    }
+    function tick(now) {
+      if (!start) {
+        start = now;
+        live.forEach(function (l) { l[0].setAttribute('aria-live', 'off'); });
+      }
+      var p = Math.min(1, (now - start) / ms);
+      frame(p);
+      if (p < 1) raf = requestAnimationFrame(tick); else stop();
+    }
+    var seen = new IntersectionObserver(function (entries) {
+      var e = entries[entries.length - 1], view = e.rootBounds ? e.rootBounds.height : innerHeight;
+      clearTimeout(timer);
+      // Most of the piece is visible, or it fills most of the screen.
+      if (e.intersectionRatio < 0.6 && e.intersectionRect.height < 0.6 * view) return;
+      timer = setTimeout(function () {
+        seen.disconnect();
+        var images = Promise.all(imgs.map(function (img) { return img.decode().catch(function () {}); }));
+        Promise.race([images, new Promise(function (r) { setTimeout(r, 3000); })]).then(function () {
+          if (!over) raf = requestAnimationFrame(tick);
+        });
+      }, 600);
+    }, { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] });
+    cues.forEach(function (t) { piece.addEventListener(t, stop, true); });
+    seen.observe(piece);
+  }
+  window.demoOnce = demoOnce;
 
   document.querySelectorAll('.compare').forEach(function (c) {
     var input = c.querySelector('input[type="range"]');
@@ -12,6 +60,23 @@
     var set = function (v) { c.style.setProperty('--pos', v + '%'); };
     input.addEventListener('input', function () { set(input.value); });
     set(input.value);
+    // Towards one image, across to the other, back to the start.
+    var demo = function () {
+      var home = +input.value;
+      demoOnce(c, 3200, function (p) {
+        var v = home + 35 * Math.sin(2 * Math.PI * smooth(p));
+        input.value = v;
+        set(v);
+      });
+    };
+    // In the banner, wait for the entrance to finish.
+    var media = root.classList.contains('reveal') && c.closest('#banner .hero-media');
+    if (media) media.addEventListener('transitionend', function go(e) {
+      if (e.target !== media) return;
+      media.removeEventListener('transitionend', go);
+      demo();
+    });
+    else demo();
   });
 
   document.querySelectorAll('[data-walk]').forEach(function (walk) {
@@ -50,6 +115,12 @@
     range.addEventListener('input', function () { show(+range.value); });
     walk.classList.add('is-live');
     show(1);
+    // Along the whole journey, a pause at the end, then quickly back to the first step.
+    demoOnce(walk, 4200, function (p) {
+      var along = p < 0.6 ? p / 0.6 : p < 0.78 ? 1 : 1 - (p - 0.78) / 0.22;
+      var n = 1 + Math.round(along * (steps.length - 1));
+      if (n !== +range.value) show(n);
+    });
   });
 
   var links = Array.prototype.slice.call(document.querySelectorAll('a.zoom'));
