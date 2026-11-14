@@ -1,6 +1,7 @@
 ---
 title: Gym Box
-order: 1
+field: service
+order: 2
 discipline: Service design, UX
 summary: Private, fully equipped workout pods that people find, book and unlock with their phone.
 context: Team project, Service Design course.

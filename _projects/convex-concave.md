@@ -1,9 +1,10 @@
 ---
 title: Convex / Concave
-order: 5
-discipline: Product and accessory design
+field: making
+order: 1
+discipline: Form and space
 summary: A sculptural shoulder bag, taken from a pencil silhouette to a full-scale felt prototype.
-context: Individual university project.
+context: Form and Space studio, individual project.
 card: /assets/images/work/bag-card.jpg
 card_alt: Marker rendering of a sculptural shoulder bag with a curved zip
 card_alt_img: /assets/images/work/bag-card-alt.jpg
@@ -14,8 +15,8 @@ lead: A women's shoulder bag whose sides are shaped by convex and concave curves
 facts:
   - label: Type
     value: Product and accessory design
-  - label: Context
-    value: Individual university project
+  - label: Course
+    value: Form and Space studio, individual project
   - label: Role
     value: Concept, form development, 3D model, prototype
   - label: Tools

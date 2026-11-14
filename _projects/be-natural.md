@@ -1,7 +1,8 @@
 ---
 title: Be Natural
-order: 3
-discipline: Packaging, brand
+field: product
+order: 2
+discipline: Packaging and brand identity
 summary: A carry-out box for a fresh-juice brand, with the bottles on top and a pull-out drawer for a side order.
 context: University project.
 card: /assets/images/work/pack-hero.jpg

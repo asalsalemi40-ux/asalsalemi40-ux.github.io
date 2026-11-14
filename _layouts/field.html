@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP | html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en">
+{% include head.html %}
+<body>
+    <div id="wrapper">
+        <div id="main">
+            <div class="inner">
+                {% include header.html %}
+                {%- assign items = site.projects | where: 'field', page.key | sort: 'order' %}
+                <section class="field-page">
+                    <header class="field-head">
+                        <p class="field-num">{{ page.number }} <span>Field {{ page.order }} of {{ site.fields.size }}</span></p>
+                        <h1>{{ page.title }}</h1>
+                        <p class="lead">{{ page.lead }}</p>
+                        <p class="field-count">{{ items.size }} project{% if items.size != 1 %}s{% endif %}</p>
+                    </header>
+                    {{ content }}
+                    <div class="work-list">
+                        {%- for p in items %}
+                        {% include work-item.html project=p %}
+                        {%- endfor %}
+                    </div>
+                    <nav class="field-nav" aria-label="Other fields">
+                        {%- assign fields = site.fields | sort: 'order' %}
+                        {%- for f in fields %}{% if f.key != page.key %}
+                        <a href="{{ f.url | relative_url }}"><small>{{ f.number }}</small><strong>{{ f.title }}</strong><img src="{{ f.cover | relative_url }}" alt="" loading="lazy"></a>
+                        {%- endif %}{% endfor %}
+                    </nav>
+                </section>
+            </div>
+        </div>
+        {% include sidebar.html %}
+    </div>
+    {% include footer.html %}
+</body>
+</html>

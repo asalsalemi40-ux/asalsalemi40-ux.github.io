@@ -22,16 +22,28 @@ instagram_url:
 # Build settings
 markdown: kramdown
 collections:
+  # The three fields her work is grouped into; each gets a page at /work/<file name>/.
+  fields:
+    output: true
+    permalink: /work/:name/
   projects:
     output: true
     permalink: /work/:name/
+plugins:
+  - jekyll-redirect-from
 defaults:
+  - scope:
+      path: ""
+      type: fields
+    values:
+      layout: field
   - scope:
       path: ""
       type: projects
     values:
       layout: project
 exclude:
+  - _archive
   - README.md
   - LICENSE.md
   - Gemfile
