@@ -26,16 +26,11 @@ print:
       text: "A desk lamp that reads as a figure: frames for the body and legs, a box for the head, leaning over the desk the way you lean over a book."
     - title: Making
       text: "Wooden strips cut to length and notched into half-lap joints, glued into frames, then joined to each other with bolts. The head holds a warm bulb."
-  heading: From strips of wood to a lamp
-  intro: "Every frame is made from straight strips with half-lap joints, so the figure is built entirely from right angles."
-  columns: 3
+  layout: single
   images:
     - src: /assets/images/work/desklamp-joints.jpg
       caption: "Half-lap joints laid out before gluing."
-    - src: /assets/images/work/desklamp-1.jpg
-      caption: "The finished lamp, lit."
-    - src: /assets/images/work/desklamp-2.jpg
-      caption: "The head leans over the desk."
+
 ---
 
 <div class="chapter">

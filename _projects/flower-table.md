@@ -26,16 +26,13 @@ print:
       text: "A side table read as a flower: the top is the bloom, the stem is the leg, and two round leaves along the stem become small shelves for a cup or a phone."
     - title: Making
       text: "The petal outline and the circles were traced onto board, cut out with a jigsaw, sanded, and painted white and green."
-  heading: From traced outline to finished table
-  intro: "Tracing and cutting the parts in the workshop, then the painted table."
-  columns: 3
+  layout: single
   images:
     - src: /assets/images/work/table-trace.jpg
-      caption: "The petal outline and circles traced on board."
+      caption: "The outline traced on board."
     - src: /assets/images/work/table-cut.jpg
       caption: "Cut out with a jigsaw."
-    - src: /assets/images/work/table-studio.jpg
-      caption: "Finished: a top, a stem and two leaves."
+
 ---
 
 <div class="chapter">

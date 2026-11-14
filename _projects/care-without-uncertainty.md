@@ -64,6 +64,22 @@ print:
   heading: The journey today and the service behind it
   intro: "The journey dips at the moments of doubt: deciding whether to act, and deciding where to go and what it will cost. Each touchpoint of the service answers one of those moments, backed by work the mother never sees."
   images: []
+  personas:
+    - name: Maryam, 33
+      tag: The cautious caregiver
+      quote: "“If one of my children gets sick at night, my first thought is: how can I get help, and how much will it cost?”"
+    - name: Masoumeh, 42
+      tag: The unsupported decision-maker
+      quote: "“Even when I can afford treatment, the responsibility of making the right decision alone is stressful.”"
+    - name: Azadeh, 44
+      tag: The time-sensitive caregiver
+      quote: "“When time matters, long waiting times are exhausting, and high costs are still a concern.”"
+    - name: Niusha, 34
+      tag: The cost-conscious planner
+      quote: "“In a sensitive moment, my biggest fear is not knowing what the treatment will cost.”"
+    - name: Elaheh, 30
+      tag: The reassurance seeker
+      quote: "“I want to make the right decision for my child, but I often feel alone and unsure during the process.”"
 ---
 
 <div class="chapter">

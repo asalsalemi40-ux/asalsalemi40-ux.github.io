@@ -28,16 +28,15 @@ print:
       text: "A simple stand that lifts a cat's food and water off the floor and keeps the two bowls in place, with a steel frame strong enough to stay put."
     - title: Making
       text: "The frame was measured, cut, ground and welded in the metal workshop, then painted black. A board with a wood edge sits on top and holds the bowls."
-  heading: From steel tube to a stand
-  intro: "Measuring, cutting, grinding and welding in the workshop, then the finished stand in use."
-  columns: 3
+  layout: single
   images:
     - src: /assets/images/work/pet-measure.jpg
-      caption: "Measuring the steel before cutting."
+      caption: "Measuring the steel."
     - src: /assets/images/work/pet-vise.jpg
       caption: "A welded frame in the vise."
     - src: /assets/images/work/pet-cat.jpg
       caption: "In use."
+
 ---
 
 <div class="chapter">

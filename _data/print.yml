@@ -1,0 +1,8 @@
+# Photos on the PDF cover, in reading order (three tall columns, two rows).
+cover:
+  - /assets/images/work/paper-lamp-lit.jpg
+  - /assets/images/work/desklamp-1.jpg
+  - /assets/images/work/skate-lit.jpg
+  - /assets/images/work/pet-cat.jpg
+  - /assets/images/work/table-studio.jpg
+  - /assets/images/work/pack-box.jpg

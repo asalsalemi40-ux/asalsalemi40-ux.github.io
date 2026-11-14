@@ -26,16 +26,11 @@ print:
       text: "Descriptive geometry is about moving between a form and its flat drawing. This lamp is built the same way: a faceted form developed into flat nets, then cut, scored and folded back into a volume."
     - title: Light
       text: "A light inside shows through one opening and grazes the planes, so every facet takes a different tone."
-  heading: Planes and shadow
-  intro: "The same form from three sides. The light inside makes every facet a different tone."
-  columns: 3
+  layout: single
   images:
-    - src: /assets/images/work/paper-lamp-lit.jpg
-      caption: "Front."
     - src: /assets/images/work/fold-top.jpg
-      caption: "From above."
-    - src: /assets/images/work/fold-side.jpg
-      caption: "Side."
+      caption: "From above: light through one opening."
+
 ---
 
 <div class="chapter">

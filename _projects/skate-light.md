@@ -26,16 +26,13 @@ print:
       text: "Can a skateboard leave motion behind and still keep its identity? And can changing what its main parts do turn it into an object that is both decorative and useful?"
     - title: The idea
       text: "Motion becomes light. The wheels are removed and bulbs take their place on the trucks, so the deck is still recognisable at a glance but now lights a room."
-  heading: From deck to wall light
-  intro: "The deck is drilled for the bulb sockets where the wheels were, wired to a cord with an inline switch, and hung about 5 cm off the wall."
-  columns: 3
+  layout: single
   images:
-    - src: /assets/images/work/skate-lit.jpg
-      caption: "On the wall, lit."
     - src: /assets/images/work/skate-drawing.jpg
-      caption: "Dimensions: 80 × 20 cm, 5 cm off the wall."
+      caption: "Dimensions: an 80 × 20 cm deck, 5 cm off the wall."
     - src: /assets/images/work/skate-wiring.jpg
       caption: "Parts and wiring: sockets, bulbs, cord, switch."
+
 ---
 
 <div class="chapter">
