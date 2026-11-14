@@ -5,13 +5,13 @@ order: 2
 discipline: Packaging and brand identity
 summary: A carry-out box for a fresh-juice brand, with the bottles on top and a pull-out drawer for a side order.
 context: University project.
-card: /assets/images/work/pack-hero.jpg
-card_alt: Orange render of the final juice box with a rope handle and an open drawer
+card: /assets/images/work/pack-scene.jpg
+card_alt: Render of the final juice box with its handle, on a wooden table with oranges
 card_alt_img: /assets/images/work/pack-sketch-1.jpg
 peek: First sketches
-hero: /assets/images/work/pack-hero.jpg
-hero_ratio: 1408 / 832
-hero_alt: Render of the final juice box with its drawer pulled out
+hero: /assets/images/work/pack-scene.jpg
+hero_ratio: 1037 / 845
+hero_alt: Render of the final juice box with its handle, on a wooden table with oranges
 lead: New packaging for a fresh-juice brand. One box carries the bottles and, in a pull-out drawer, a snack from the same order.
 facts:
   - label: Type
@@ -37,10 +37,10 @@ print:
       caption: "Finalist: a triangular carrier that opens into a display."
     - src: /assets/images/work/pack-sketch-3.jpg
       caption: "Finalist: arrows map opening and closing."
-    - src: /assets/images/work/pack-drawer.jpg
+    - src: /assets/images/work/pack-box.jpg
       caption: "The drawer slides out for a side order."
-    - src: /assets/images/work/pack-closed.jpg
-      caption: "Closed, with the rope handle."
+    - src: /assets/images/work/pack-dims.jpg
+      caption: "Dimensions in mm: 160 × 220 × 200."
     - src: /assets/images/work/pack-dieline.jpg
       caption: "Dieline: the box is cut from one sheet."
 ---
@@ -75,8 +75,8 @@ The final box carries the bottles above and a pull-out drawer below, closes unde
 {% include model3d.html model="be-natural" poster="/assets/images/work/pack-line.jpg" alt="Interactive 3D model of the box and its drawer" from="Closed" to="Open" value="40" caption="The box as a plain board model. Slide the drawer in and out; drag to turn the box." %}
 
 <div class="gallery">
-{% include fig.html src="/assets/images/work/pack-drawer.jpg" alt="Render of the box with the drawer pulled out" caption="The drawer slides out for a side order." ratio="704 / 416" %}
-{% include fig.html src="/assets/images/work/pack-closed.jpg" alt="Render of the closed box with a rope handle" caption="Closed, with the rope handle." ratio="704 / 416" %}
-{% include fig.html src="/assets/images/work/pack-line.jpg" alt="Line render of the box and drawer" caption="Line render of the structure." ratio="704 / 416" %}
-{% include fig.html src="/assets/images/work/pack-dieline.jpg" alt="Technical drawing of the flat dieline" caption="Dieline: the whole box is cut from one sheet." ratio="704 / 416" %}
+{% include fig.html src="/assets/images/work/pack-box.jpg" alt="Render of the box with the drawer pulled out" caption="The drawer slides out for a side order." ratio="1088 / 968" %}
+{% include fig.html src="/assets/images/work/pack-dims.jpg" alt="Line drawing of the box with dimensions 160, 220 and 200 mm" caption="Dimensions in mm: 160 × 220 × 200." ratio="1088 / 968" %}
+{% include fig.html src="/assets/images/work/pack-dieline.jpg" alt="Technical drawing of the flat dieline" caption="Dieline: the whole box is cut from one sheet." ratio="1088 / 968" %}
+{% include fig.html src="/assets/images/work/pack-assembly.jpg" alt="Four drawings showing the flat box folding into shape" caption="It ships flat and folds up in a few steps." ratio="1088 / 968" %}
 </div>
