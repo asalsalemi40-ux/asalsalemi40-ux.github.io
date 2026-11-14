@@ -7,5 +7,6 @@
       {% if site.behance_url %}<li><a href="{{ site.behance_url }}" class="icon fa-behance" target="_blank" rel="noopener" title="Behance"><span class="label">Behance</span></a></li>{% endif %}
       {% if site.instagram_url %}<li><a href="{{ site.instagram_url }}" class="icon fa-instagram" target="_blank" rel="noopener" title="Instagram"><span class="label">Instagram</span></a></li>{% endif %}
       <li><a href="{{ site.portfolio_pdf | relative_url }}" class="icon fa-file-pdf-o" title="Portfolio (PDF)"><span class="label">Portfolio (PDF)</span></a></li>
+      {% if site.cv_pdf %}<li><a href="{{ site.cv_pdf | relative_url }}" class="icon fa-file-text-o" title="CV (PDF)"><span class="label">CV (PDF)</span></a></li>{% endif %}
     </ul>
   </header>

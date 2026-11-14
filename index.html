@@ -31,5 +31,6 @@ redirect_from:
 	<ul class="actions">
 		<li><a href="mailto:{{ site.email }}" class="button special">Email me</a></li>
 		<li><a href="{{ site.portfolio_pdf | relative_url }}" class="button">Portfolio (PDF)</a></li>
+		{% if site.cv_pdf %}<li><a href="{{ site.cv_pdf | relative_url }}" class="button">CV (PDF)</a></li>{% endif %}
 	</ul>
 </section>

@@ -7,8 +7,9 @@ summary: From a family of walker concepts to Night Cane, a four-footed cane with
 context: Project 1 studio, design for older adults.
 card: /assets/images/work/cane-hero.jpg
 card_alt: Concept drawings of a cane with an LED in the front of its handle and a four-footed base
-card_alt_img: /assets/images/work/walker-hero.jpg
-peek: Walker concepts
+card_alt_img: /assets/images/work/cane-sketch-handle.jpg
+alt_fit: contain
+peek: The handle
 hero: /assets/images/work/cane-hero.jpg
 hero_ratio: 16 / 9
 hero_alt: Concept drawings of the full cane with labels, two views of the handle with its LED and button, and the handle in a hand
@@ -30,18 +31,16 @@ print:
       text: "About 30 percent of people over 65 fall at least once a year. I focused on walking in low light: at night many older people cross a dark room to the bathroom without switching on the main light, sleepy, unsteady and unable to see a step or a rug edge."
     - title: Design requirements
       text: "1. Light on the path, without glare or the room lights\n2. Steady support for balance\n3. One large button, one action\n4. Light weight, a grip for older hands\n5. Durable parts and non-slip feet"
-  heading: From a family of walkers to one cane
+  heading: One cane for support and light
   intro: "A warm LED in the front of the handle lights the floor a step or two ahead. One large button switches it. The telescopic shaft locks with a pin, and four rubber feet steady each step and let the cane stand on its own."
-  columns: 4
+  columns: 3
   images:
-    - src: /assets/images/work/walker-z-render.jpg
-      caption: "Exploration: Z-frame walker, one tube for both hands."
-    - src: /assets/images/work/walker-trike.jpg
-      caption: "Exploration: three wheels, headlight, seat."
     - src: /assets/images/work/cane-sketch-full.jpg
-      caption: "Final: Night Cane, LED in the handle, four feet."
+      caption: "Night Cane: LED in the handle, soft-touch grip, height lock, four feet."
     - src: /assets/images/work/cane-sketch-handle.jpg
       caption: "The handle: LED at the front, one large button."
+    - src: /assets/images/work/cane-sketch-hand.jpg
+      caption: "The button sits under the thumb."
 ---
 
 <div class="chapter">
@@ -80,28 +79,10 @@ I also checked the design against ISO 11334 (requirements and strength tests for
 </div>
 
 <div class="chapter">
-<h2>Exploration: a family of walkers</h2>
+<h2>Exploration</h2>
 <div class="body" markdown="1">
-Standard walkers are cheap and familiar, but wheeled models are less stable, curbs and car doors are hard, and lifting the frame tires weak hands and painful shoulders. Research we reviewed puts the best handle height at about 48 percent of body height. I first drew a family of frames, each answering a different need, sketched and then rendered from the same view.
+Standard walkers are cheap and familiar, but wheeled models are less stable, curbs and car doors are hard, and lifting the frame tires weak hands and painful shoulders. Research I reviewed puts the best handle height at about 48 percent of body height. I first explored a family of walker frames, each answering a different need, before narrowing down.
 </div>
-</div>
-
-<div class="compare-pair">
-<figure>
-{% include compare.html left="/assets/images/work/walker-z-sketch.jpg" right="/assets/images/work/walker-z-render.jpg" ratio="327 / 683" left_alt="Pencil sketch of the Z-frame walker" right_alt="Render of the Z-frame walker" framed=true %}
-<figcaption>Z-frame: one continuous aluminium tube spreads weight across both hands and forearms. Drag to compare sketch and render.</figcaption>
-</figure>
-<figure>
-{% include compare.html left="/assets/images/work/walker-s-line.jpg" right="/assets/images/work/walker-s-render.jpg" ratio="531 / 816" left_label="Line drawing" left_alt="Line drawing of a curved walker frame" right_alt="Render of the same frame" framed=true %}
-<figcaption>A curved frame with handles at several heights, drawn and rendered from the same view.</figcaption>
-</figure>
-</div>
-
-<div class="gallery four">
-{% include fig.html src="/assets/images/work/walker-seat.jpg" alt="Walker with a fold-down seat and a light at the top" caption="Fold-down seat for sudden fatigue, and a light for dark rooms." ratio="340 / 683" %}
-{% include fig.html src="/assets/images/work/walker-u.jpg" alt="U-shaped walker on a round base with small wheels" caption="U-shaped frame on soft wheels, for indoors and out." ratio="340 / 683" %}
-{% include fig.html src="/assets/images/work/walker-trike.jpg" alt="Three-wheeled walker with a seat and headlight" caption="Three wheels, an LED headlight and an adjustable seat." ratio="340 / 683" %}
-{% include fig.html src="/assets/images/work/walker-branch.jpg" alt="Multi-branch walker with pads and a seat" caption="Several handles, soft pads and a seat, for severe weakness." ratio="340 / 683" %}
 </div>
 
 <div class="chapter">
@@ -130,7 +111,6 @@ One object that does both jobs: a cane for support and a light for seeing the wa
 {% include fig.html src="/assets/images/work/cane-sketch-hand.jpg" alt="A hand holding the handle with the thumb near the button" caption="In the hand: the button sits under the thumb." ratio="361 / 290" %}
 </div>
 
-{% include model3d.html model="night-cane" poster="/assets/images/work/cane-sketch-full.jpg" alt="Interactive 3D model of Night Cane" from="Daylight" to="At night" value="0" ratio="4 / 3" caption="Slide to darken the room and switch the light on: the LED throws a warm pool of light on the floor ahead. Drag to turn the cane." %}
 
 <div class="chapter">
 <h2>A night, step by step</h2>

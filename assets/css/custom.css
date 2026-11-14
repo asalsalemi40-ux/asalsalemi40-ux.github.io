@@ -687,3 +687,5 @@ table.matrix tr.gain td { background: #eef0e7; }
 @media screen and (max-width: 736px) {
 	.personas, .cards.five, .cards.three { grid-template-columns: 1fr; }
 }
+#banner .hero-link { border: 0; display: block; }
+.project-hero figcaption { background: #fff; color: var(--muted); font-size: 0.86em; padding: 0.75em 0 0 0; }

@@ -5,13 +5,16 @@ order: 2
 discipline: Packaging and brand identity
 summary: A carry-out box for a fresh-juice brand, with the bottles on top and a pull-out drawer for a side order.
 context: University project.
-card: /assets/images/work/pack-scene.jpg
-card_alt: Render of the final juice box with its handle, on a wooden table with oranges
+card: /assets/images/work/pack-carrier.jpg
+card_fit: contain
+card_alt: Be Natural's two-bottle kraft carrier with a window and a carry handle
 card_alt_img: /assets/images/work/pack-sketch-1.jpg
 peek: First sketches
-hero: /assets/images/work/pack-scene.jpg
-hero_ratio: 1037 / 845
-hero_alt: Render of the final juice box with its handle, on a wooden table with oranges
+hero: /assets/images/work/pack-carrier.jpg
+hero_ratio: 16 / 10
+hero_bg: "#fff"
+hero_caption: Be Natural's current two-bottle carrier, the starting point for the redesign.
+hero_alt: Be Natural's two-bottle kraft carrier with a window and a carry handle
 lead: New packaging for a fresh-juice brand. One box carries the bottles and, in a pull-out drawer, a snack from the same order.
 facts:
   - label: Type

@@ -17,7 +17,7 @@
                         <h1>{{ page.title }}</h1>
                         <p class="lead">{{ page.lead }}</p>
                     </header>
-                    <figure class="project-hero"><img src="{{ page.hero | relative_url }}" alt="{{ page.hero_alt }}"{% if page.hero_ratio %} style="aspect-ratio: {{ page.hero_ratio }}; object-fit: contain; background: {{ page.hero_bg | default: '#fff' }}"{% endif %}></figure>
+                    <figure class="project-hero"><img src="{{ page.hero | relative_url }}" alt="{{ page.hero_alt }}"{% if page.hero_ratio %} style="aspect-ratio: {{ page.hero_ratio }}; object-fit: contain; background: {{ page.hero_bg | default: '#fff' }}"{% endif %}>{% if page.hero_caption %}<figcaption>{{ page.hero_caption }}</figcaption>{% endif %}</figure>
                     <dl class="facts">
                         {% for f in page.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
                     </dl>

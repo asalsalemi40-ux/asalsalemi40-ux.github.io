@@ -128,7 +128,7 @@ permalink: /print/
     {{ note.text | markdownify }}
     {%- endfor %}
   </div>
-  <figure class="intro-hero{% if p.hero_ratio %} whole{% endif %}"><img src="{{ p.hero | relative_url }}" alt=""></figure>
+  <figure class="intro-hero{% if p.hero_ratio %} whole{% endif %}"><img src="{{ p.hero | relative_url }}" alt="">{% if p.hero_caption %}<figcaption>{{ p.hero_caption }}</figcaption>{% endif %}</figure>
   <footer><span><strong>{{ site.title }}</strong> {{ p.title }}</span><span>{{ n }}</span></footer>
 </section>
 

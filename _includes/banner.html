@@ -7,10 +7,11 @@
       <ul class="actions">
         <li><a href="#work" class="button special">See the work</a></li>
         <li><a href="{{ site.portfolio_pdf | relative_url }}" class="button">Portfolio (PDF)</a></li>
+        {% if site.cv_pdf %}<li><a href="{{ site.cv_pdf | relative_url }}" class="button">CV (PDF)</a></li>{% endif %}
       </ul>
     </div>
     <figure class="hero-media">
-      <img class="hero-photo" src="{{ '/assets/images/work/paper-lamp-lit.jpg' | relative_url }}" alt="A faceted lamp folded from white card, lit from inside, on a dark wooden table" width="1200" height="1500">
-      <figcaption>A lamp folded from white card, lit from inside.</figcaption>
+      <a href="{{ '/work/bionic-form/' | relative_url }}" class="hero-link"><img class="hero-photo" src="{{ '/assets/images/work/bionic-form-front.jpg' | relative_url }}" alt="A faceted white-card form inspired by a flower, lit from inside, on a dark wooden table" width="1200" height="1500"></a>
+      <figcaption>Bionic form study: a flower turned into flat planes of white card.</figcaption>
     </figure>
   </section>

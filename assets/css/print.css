@@ -173,3 +173,13 @@ body.print {
 .print-personas small { color: var(--accent-ink); display: block; font-size: 6.5pt; font-weight: 600; margin-bottom: 0.6mm; }
 .print-personas strong { color: var(--ink); display: block; font-family: var(--display); font-size: 8.5pt; margin-bottom: 1.2mm; }
 .print-personas p { color: var(--text); font-size: 7pt; line-height: 1.4; margin: 0; }
+.intro-hero figcaption { background: #fff; color: var(--muted); font-size: 7pt; padding-top: 1.5mm; }
+
+/* About sheet: compact enough for the CV-length content */
+.about { gap: 10mm; grid-template-columns: 1.5fr 1fr; }
+.about-text .lead { font-size: 8.6pt; line-height: 1.45; margin-bottom: 2mm; }
+.about-text .about-grid { grid-template-columns: 22mm 1fr; }
+.about-text .about-grid h2 { font-size: 7.8pt; padding-top: 1.2mm; }
+.about-text .about-grid .list { font-size: 7.1pt; padding: 1.1mm 0 1.2mm 0; }
+.about-text .about-grid .list p { line-height: 1.36; margin: 0 0 0.7mm 0; }
+.contents h3 b { text-align: left; }
