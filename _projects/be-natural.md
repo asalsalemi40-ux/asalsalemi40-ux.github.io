@@ -19,13 +19,13 @@ facts:
   - label: Context
     value: University project
   - label: Brand
-    value: Be Natural (Tabiei Bash in Persian), fresh juice
+    value: Be Natural, a fresh-juice brand
   - label: Deliverables
     value: Ten concept sketches, final box, dieline, brand sheets
 print:
   notes:
     - title: The brief
-      text: "Be Natural is the English meaning of the brand's Persian name, Tabiei Bash. I studied the brand, its current two-bottle carrier and its competitors, then set out to design a pack that protects the bottles, is easy to carry and open, and keeps the brand visible."
+      text: "Be Natural is a fresh-juice brand. I studied the brand, its current two-bottle carrier and its competitors, then set out to design a pack that protects the bottles, is easy to carry and open, and keeps the brand visible."
     - title: Ten sketches, three finalists
       text: "I explored ten concepts, scored them against the brief and shortlisted three: a stretched cube with a recessed grip, a one-piece triangular carrier that folds flat without glue, and a box with a rotating lid."
   heading: From sketches to the final box
@@ -48,7 +48,7 @@ print:
 <div class="chapter">
 <h2>The brief</h2>
 <div class="body" markdown="1">
-Be Natural is the English meaning of the brand's Persian name, Tabiei Bash. I studied the brand, its current two-bottle carrier and its competitors, then set out to design a pack that protects the bottles, is easy to carry and open, and keeps the brand honest and visible.
+Be Natural is a fresh-juice brand. I studied the brand, its current two-bottle carrier and its competitors, then set out to design a pack that protects the bottles, is easy to carry and open, and keeps the brand honest and visible.
 </div>
 </div>
 

@@ -1,19 +1,18 @@
 ---
-title: Night Cane
+title: Walking Aids for Older Adults
 field: product
 order: 1
 discipline: Product redesign, inclusive design
-summary: A four-footed cane with a light in its handle, for older adults who get up in the dark.
+summary: From a family of walker concepts to Night Cane, a four-footed cane with a light in its handle for getting up in the dark.
 context: Project 1 studio, design for older adults.
 card: /assets/images/work/cane-hero.jpg
 card_alt: Concept drawings of a cane with an LED in the front of its handle and a four-footed base
-card_alt_img: /assets/images/work/cane-sketch-handle.jpg
-alt_fit: contain
-peek: The handle
+card_alt_img: /assets/images/work/walker-hero.jpg
+peek: Walker concepts
 hero: /assets/images/work/cane-hero.jpg
 hero_ratio: 16 / 9
 hero_alt: Concept drawings of the full cane with labels, two views of the handle with its LED and button, and the handle in a hand
-lead: Many falls in later life happen at night, on the way from bed to the bathroom in a dark room. Night Cane puts the two things that prevent them, steady support and light on the floor ahead, into one object.
+lead: Nearly a third of people over 65 fall every year, many of them at night on the short trip from bed to bathroom. I explored a family of walkers for weak muscles and painful joints, then narrowed it to Night Cane, which puts steady support and light on the floor ahead into one object.
 redirect_from:
   - /work/walker/
 facts:
@@ -24,23 +23,25 @@ facts:
   - label: Users
     value: Older adults with poor balance, weak muscles or low vision
   - label: Methods
-    value: Literature review, 5W1H analysis, standards review, cultural study, usability criteria
+    value: Literature review, ergonomic data, 5W1H analysis, standards review, sketching and rendering
 print:
   notes:
     - title: The problem
       text: "About 30 percent of people over 65 fall at least once a year. I focused on walking in low light: at night many older people cross a dark room to the bathroom without switching on the main light, sleepy, unsteady and unable to see a step or a rug edge."
     - title: Design requirements
       text: "1. Light on the path, without glare or the room lights\n2. Steady support for balance\n3. One large button, one action\n4. Light weight, a grip for older hands\n5. Durable parts and non-slip feet"
-  heading: One object for support and light
+  heading: From a family of walkers to one cane
   intro: "A warm LED in the front of the handle lights the floor a step or two ahead. One large button switches it. The telescopic shaft locks with a pin, and four rubber feet steady each step and let the cane stand on its own."
-  columns: 3
+  columns: 4
   images:
+    - src: /assets/images/work/walker-z-render.jpg
+      caption: "Exploration: Z-frame walker, one tube for both hands."
+    - src: /assets/images/work/walker-trike.jpg
+      caption: "Exploration: three wheels, headlight, seat."
     - src: /assets/images/work/cane-sketch-full.jpg
-      caption: "LED in the handle, soft-touch grip, height lock, four-footed base."
+      caption: "Final: Night Cane, LED in the handle, four feet."
     - src: /assets/images/work/cane-sketch-handle.jpg
-      caption: "The handle: the LED at the front, one large button on the side."
-    - src: /assets/images/work/cane-sketch-hand.jpg
-      caption: "The button sits under the thumb."
+      caption: "The handle: LED at the front, one large button."
 ---
 
 <div class="chapter">
@@ -79,7 +80,39 @@ I also checked the design against ISO 11334 (requirements and strength tests for
 </div>
 
 <div class="chapter">
-<h2>The concept</h2>
+<h2>Exploration: a family of walkers</h2>
+<div class="body" markdown="1">
+Standard walkers are cheap and familiar, but wheeled models are less stable, curbs and car doors are hard, and lifting the frame tires weak hands and painful shoulders. Research we reviewed puts the best handle height at about 48 percent of body height. I first drew a family of frames, each answering a different need, sketched and then rendered from the same view.
+</div>
+</div>
+
+<div class="compare-pair">
+<figure>
+{% include compare.html left="/assets/images/work/walker-z-sketch.jpg" right="/assets/images/work/walker-z-render.jpg" ratio="327 / 683" left_alt="Pencil sketch of the Z-frame walker" right_alt="Render of the Z-frame walker" framed=true %}
+<figcaption>Z-frame: one continuous aluminium tube spreads weight across both hands and forearms. Drag to compare sketch and render.</figcaption>
+</figure>
+<figure>
+{% include compare.html left="/assets/images/work/walker-s-line.jpg" right="/assets/images/work/walker-s-render.jpg" ratio="531 / 816" left_label="Line drawing" left_alt="Line drawing of a curved walker frame" right_alt="Render of the same frame" framed=true %}
+<figcaption>A curved frame with handles at several heights, drawn and rendered from the same view.</figcaption>
+</figure>
+</div>
+
+<div class="gallery four">
+{% include fig.html src="/assets/images/work/walker-seat.jpg" alt="Walker with a fold-down seat and a light at the top" caption="Fold-down seat for sudden fatigue, and a light for dark rooms." ratio="340 / 683" %}
+{% include fig.html src="/assets/images/work/walker-u.jpg" alt="U-shaped walker on a round base with small wheels" caption="U-shaped frame on soft wheels, for indoors and out." ratio="340 / 683" %}
+{% include fig.html src="/assets/images/work/walker-trike.jpg" alt="Three-wheeled walker with a seat and headlight" caption="Three wheels, an LED headlight and an adjustable seat." ratio="340 / 683" %}
+{% include fig.html src="/assets/images/work/walker-branch.jpg" alt="Multi-branch walker with pads and a seat" caption="Several handles, soft pads and a seat, for severe weakness." ratio="340 / 683" %}
+</div>
+
+<div class="chapter">
+<h2>Narrowing down</h2>
+<div class="body" markdown="1">
+Two ideas kept coming back across the family: light for dark rooms and a base that stands on its own. The night trip to the bathroom needs both, and it needs them in something small enough to keep beside the bed. That became the final design.
+</div>
+</div>
+
+<div class="chapter">
+<h2>Final design: Night Cane</h2>
 <div class="body" markdown="1">
 One object that does both jobs: a cane for support and a light for seeing the way.
 
