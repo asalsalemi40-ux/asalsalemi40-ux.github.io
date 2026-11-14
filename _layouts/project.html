@@ -10,22 +10,27 @@
         <div id="main">
             <div class="inner">
                 {% include header.html %}
+                {%- assign field = site.fields | where: 'key', page.field | first %}
                 <article class="project">
                     <header class="project-head">
-                        <p class="discipline">{{ page.discipline }}</p>
+                        <p class="discipline"><a href="{{ field.url | relative_url }}">{{ field.title }}</a><span>{{ page.discipline }}</span></p>
                         <h1>{{ page.title }}</h1>
                         <p class="lead">{{ page.lead }}</p>
                     </header>
-                    <figure class="project-hero"><img src="{{ page.hero | relative_url }}" alt="{{ page.hero_alt }}"{% if page.hero_ratio %} style="aspect-ratio: {{ page.hero_ratio }}; object-fit: contain; background: #fff"{% endif %}></figure>
+                    <figure class="project-hero"><img src="{{ page.hero | relative_url }}" alt="{{ page.hero_alt }}"{% if page.hero_ratio %} style="aspect-ratio: {{ page.hero_ratio }}; object-fit: contain; background: {{ page.hero_bg | default: '#fff' }}"{% endif %}>{% if page.hero_caption %}<figcaption>{{ page.hero_caption }}</figcaption>{% endif %}</figure>
                     <dl class="facts">
                         {% for f in page.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
                     </dl>
                     {{ content }}
-                    {% assign projects = site.projects | sort: 'order' %}
-                    {% for p in projects %}{% if p.url == page.url %}{% assign idx = forloop.index0 %}{% endif %}{% endfor %}
-                    {% assign next_i = idx | plus: 1 %}{% if next_i >= projects.size %}{% assign next_i = 0 %}{% endif %}
-                    {% assign next = projects[next_i] %}
-                    <a class="next-project" href="{{ next.url | relative_url }}"><span><small>Next project</small><strong>{{ next.title }}</strong></span><img src="{{ next.card | relative_url }}" alt="" loading="lazy"></a>
+                    {%- comment -%} Reading order: field by field, then project order inside each field. {%- endcomment -%}
+                    {%- assign fields = site.fields | sort: 'order' %}
+                    {%- assign seq = "" | split: "" %}
+                    {%- for f in fields %}{% assign items = site.projects | where: 'field', f.key | sort: 'order' %}{% for p in items %}{% assign seq = seq | push: p %}{% endfor %}{% endfor %}
+                    {%- for p in seq %}{% if p.url == page.url %}{% assign idx = forloop.index0 %}{% endif %}{% endfor %}
+                    {%- assign next_i = idx | plus: 1 %}{% if next_i >= seq.size %}{% assign next_i = 0 %}{% endif %}
+                    {%- assign next = seq[next_i] %}
+                    {%- assign next_field = site.fields | where: 'key', next.field | first %}
+                    <a class="next-project" href="{{ next.url | relative_url }}"><span><small>{% if next.field == page.field %}Next in {{ field.title }}{% else %}Next field: {{ next_field.title }}{% endif %}</small><strong>{{ next.title }}</strong></span><img src="{{ next.card | relative_url }}" alt="" loading="lazy"></a>
                 </article>
             </div>
         </div>

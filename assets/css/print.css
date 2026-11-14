@@ -113,3 +113,73 @@ body.print {
 .back h2:after { background: var(--accent); content: ""; display: block; height: 0.6mm; margin-top: 4mm; width: 14mm; }
 .back p { font-size: 9.5pt; }
 .back .note { color: var(--muted); font-size: 8.5pt; margin-top: 6mm; max-width: 120mm; }
+
+/* Cover: the three fields */
+.cover-fields { counter-reset: none; list-style: none; margin: 8mm 0 0 0; padding: 0; }
+.cover-fields li { border-top: solid 0.25mm var(--line); color: var(--ink); font-family: var(--display); font-size: 11pt; font-weight: 700; margin: 0; padding: 2.2mm 0; }
+.cover-fields li:last-child { border-bottom: solid 0.25mm var(--line); }
+.cover-fields b { color: var(--accent-ink); display: inline-block; font-size: 8pt; width: 9mm; }
+
+/* Contents, grouped by field */
+.contents h3 { align-items: baseline; color: var(--ink); display: flex; font-size: 9.5pt; margin: 3.2mm 0 0.6mm 0; }
+.contents h3 b { color: var(--accent-ink); flex: 0 0 8mm; font-size: 7.5pt; }
+.contents h3 span { color: var(--muted); font-family: var(--sans); font-size: 7.5pt; font-weight: 600; margin-left: auto; }
+.contents li { gap: 3mm; grid-template-columns: 17mm 1fr 6mm; padding: 1.3mm 0; }
+.contents strong { font-size: 8.5pt; margin-bottom: 0.2mm; }
+.contents span { font-size: 7pt; }
+
+/* Field divider */
+.divider { display: grid; gap: 12mm; grid-template-columns: 96mm 1fr; grid-template-rows: minmax(0, 1fr); }
+.divider-text { align-self: center; }
+.divider .big-number { color: var(--accent); font-family: var(--display); font-size: 64pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1; margin: 0 0 4mm 0; }
+.divider h2 { font-size: 26pt; letter-spacing: -0.01em; line-height: 1.08; margin-bottom: 4mm; }
+.divider .lead { font-size: 10pt; }
+.divider-grid { align-content: center; display: grid; gap: 6mm 5mm; grid-template-columns: repeat(min(var(--count), 3), minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+.divider-grid li { margin: 0; }
+.divider-grid img { aspect-ratio: 16 / 10; border-radius: 2mm; display: block; margin-bottom: 1.8mm; object-fit: cover; width: 100%; }
+.divider-grid strong { color: var(--ink); display: block; font-family: var(--display); font-size: 9pt; }
+.divider-grid span { color: var(--muted); font-size: 7pt; line-height: 1.35; }
+
+/* Field name up the left edge of every project sheet */
+.edge { bottom: 18mm; color: var(--muted); font-size: 6.5pt; font-weight: 600; left: 7mm; letter-spacing: 0.12em; position: absolute; text-transform: uppercase; transform: rotate(-90deg); transform-origin: left bottom; white-space: nowrap; width: 0; }
+.edge b { color: var(--accent-ink); margin-right: 2mm; }
+
+/* One-sheet project: text on the left, the main image and a row of process images on the right */
+.single { display: grid; gap: 10mm; grid-template-columns: 88mm 1fr; grid-template-rows: minmax(0, 1fr); }
+.single-text { font-size: 8.3pt; min-height: 0; }
+.single h2 { font-size: 21pt; letter-spacing: -0.01em; line-height: 1.08; margin-bottom: 2.5mm; }
+.single .lead { font-size: 9.5pt; }
+.single .facts { border-bottom: solid 0.25mm var(--line); border-top: solid 0.3mm var(--ink); display: grid; gap: 2mm 5mm; grid-template-columns: 1fr 1fr; margin: 3.5mm 0 4mm 0; padding: 2.2mm 0 2.6mm 0; }
+.single .facts dt { color: var(--muted); font-size: 6.8pt; margin: 0 0 0.3mm 0; }
+.single .facts dd { color: var(--ink); font-size: 7.6pt; line-height: 1.35; margin: 0; }
+.single h3 { font-size: 8.8pt; margin: 0 0 1mm 0; }
+.single-media { display: grid; gap: 3.5mm; grid-template-columns: repeat(max(var(--n), 1), minmax(0, 1fr)); grid-template-rows: minmax(0, 1.9fr) minmax(0, 1fr); min-height: 0; }
+.single-media .big { border-radius: 2.5mm; grid-column: 1 / -1; margin: 0; min-height: 0; overflow: hidden; }
+.single-media .big img { height: 100%; object-fit: cover; width: 100%; }
+.single-media figure { display: flex; flex-direction: column; margin: 0; min-height: 0; }
+.single-media .frame { background: var(--frame); border-radius: 2mm; flex: 1 1 auto; min-height: 0; overflow: hidden; }
+.single-media .frame img { height: 100%; object-fit: cover; width: 100%; }
+.single-media figcaption { color: var(--muted); font-size: 6.8pt; line-height: 1.35; margin-top: 1.2mm; }
+
+/* Cover: six tall photo cells, three across */
+.cover-images { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.cover-images img:first-child { grid-column: auto; }
+.single-media { height: 100%; }
+.single-media .frame { flex: 1 1 0; }
+
+/* Personas strip on a service sheet */
+.print-personas { display: grid; gap: 3mm; grid-template-columns: repeat(5, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+.print-personas li { background: var(--paper); border-radius: 2mm; margin: 0; padding: 3mm 3mm 3.2mm 3mm; }
+.print-personas small { color: var(--accent-ink); display: block; font-size: 6.5pt; font-weight: 600; margin-bottom: 0.6mm; }
+.print-personas strong { color: var(--ink); display: block; font-family: var(--display); font-size: 8.5pt; margin-bottom: 1.2mm; }
+.print-personas p { color: var(--text); font-size: 7pt; line-height: 1.4; margin: 0; }
+.intro-hero figcaption { background: #fff; color: var(--muted); font-size: 7pt; padding-top: 1.5mm; }
+
+/* About sheet: compact enough for the CV-length content */
+.about { gap: 10mm; grid-template-columns: 1.5fr 1fr; }
+.about-text .lead { font-size: 8.6pt; line-height: 1.45; margin-bottom: 2mm; }
+.about-text .about-grid { grid-template-columns: 22mm 1fr; }
+.about-text .about-grid h2 { font-size: 7.8pt; padding-top: 1.2mm; }
+.about-text .about-grid .list { font-size: 7.1pt; padding: 1.1mm 0 1.2mm 0; }
+.about-text .about-grid .list p { line-height: 1.36; margin: 0 0 0.7mm 0; }
+.contents h3 b { text-align: left; }

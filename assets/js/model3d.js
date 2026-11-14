@@ -7,11 +7,22 @@ const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 const { smootherstep } = THREE.MathUtils;
 
 // Vertical span and the radius around the turning axis, so the result holds at every angle.
+// Parts flagged userData.ignoreFit (a floor, a light beam) don't count towards the framing.
 function extent(object) {
   const yaw = object.rotation.y;
   object.rotation.y = 0;
-  const box = new THREE.Box3().setFromObject(object);
+  object.updateWorldMatrix(true, true);
+  const box = new THREE.Box3(), part = new THREE.Box3();
+  (function add(o) {
+    if (o.userData.ignoreFit) return;
+    if (o.geometry) {
+      if (!o.geometry.boundingBox) o.geometry.computeBoundingBox();
+      box.union(part.copy(o.geometry.boundingBox).applyMatrix4(o.matrixWorld));
+    }
+    o.children.forEach(add);
+  })(object);
   object.rotation.y = yaw;
+  object.updateWorldMatrix(true, true);
   let reach = 0;
   for (const x of [box.min.x, box.max.x]) for (const z of [box.min.z, box.max.z]) reach = Math.max(reach, Math.hypot(x, z));
   return { bottom: box.min.y, top: box.max.y, reach };
@@ -68,8 +79,12 @@ async function mount(figure) {
   ground.receiveShadow = true;
   scene.add(ground);
 
-  model.object.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+  model.object.traverse((o) => { if (o.isMesh && !o.userData.noShadow) { o.castShadow = true; o.receiveShadow = true; } });
   scene.add(model.object);
+
+  // A model can also set the mood of the whole stage as its slider moves (light, background).
+  const mood = model.mood ? (t) => model.mood(t, { scene, key, ground, stage, view }) : () => {};
+  mood(slider());
 
   const camera = new THREE.PerspectiveCamera(28, 1, 0.01 * size, 40 * size);
 
@@ -181,6 +196,7 @@ async function mount(figure) {
   if (range && model.set) {
     range.addEventListener('input', () => {
       model.set(slider());
+      mood(slider());
       if (model.yawFor && !turned) goal = model.yawFor(slider());
       fit();
       request();
@@ -197,6 +213,7 @@ async function mount(figure) {
     if (slides) {
       range.value = t * 100;
       model.set(t);
+      mood(t);
     }
     yaw = (model.yawFor ? model.yawFor(t) : home) + view.swing * Math.sin(Math.PI * smootherstep(p, 0, 0.32));
     fit();

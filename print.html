@@ -4,9 +4,11 @@ permalink: /print/
 ---
 {%- comment -%}
   Source of the PDF portfolio: A4 landscape sheets built from the same data as the site.
+  Order: cover, about and contents, then each field (a divider sheet, then its projects).
+  A project takes two sheets (intro, process) or one when its file sets print.layout: single.
   Print it to assets/files/Asal_Salemi_Portfolio.pdf (see README).
 {%- endcomment -%}
-{%- assign projects = site.projects | sort: 'order' -%}
+{%- assign fields = site.fields | sort: 'order' -%}
 {%- assign about = site.pages | where: "name", "about.md" | first -%}
 {%- assign year = site.time | date: '%Y' -%}
 {%- capture link -%}{{ site.url | remove: 'https://' }}{%- endcapture -%}
@@ -25,14 +27,19 @@ permalink: /print/
   <div class="cover-text">
     <h1>{{ site.title }}</h1>
     <p class="tagline">{{ site.tagline }}</p>
+    <ol class="cover-fields">
+      {%- for f in fields %}
+      <li><b>{{ f.number }}</b>{{ f.title }}</li>
+      {%- endfor %}
+    </ol>
     <div class="cover-meta">
       <p><strong>Portfolio, {{ year }}</strong><br>{{ site.subtitle }}</p>
       <p><a href="mailto:{{ site.email }}">{{ site.email }}</a><br><a href="{{ site.url }}">{{ link }}</a><br>{{ site.location }}</p>
     </div>
   </div>
   <div class="cover-images">
-    {%- for p in projects %}
-    <img src="{{ p.card | relative_url }}" alt="">
+    {%- for src in site.data.print.cover %}
+    <img src="{{ src | relative_url }}" alt="">
     {%- endfor %}
   </div>
 </section>
@@ -45,36 +52,88 @@ permalink: /print/
   </div>
   <div class="contents">
     <h2>Contents</h2>
+    {%- assign n = 3 %}
+    {%- for f in fields %}
+    {%- assign items = site.projects | where: 'field', f.key | sort: 'order' %}
+    <h3><b>{{ f.number }}</b>{{ f.title }}<span>{{ n }}</span></h3>
+    {%- assign n = n | plus: 1 %}
     <ol>
-      {%- for p in projects %}
-      <li><img src="{{ p.card | relative_url }}" alt=""><span><strong>{{ p.title }}</strong>{{ p.discipline }}. {{ p.summary }}</span><b>{{ forloop.index0 | times: 2 | plus: 3 }}</b></li>
+      {%- for p in items %}
+      <li><img src="{{ p.card | relative_url }}" alt=""><span><strong>{{ p.title }}</strong>{{ p.discipline }}</span><b>{{ n }}</b></li>
+      {%- if p.print.layout == 'single' %}{% assign n = n | plus: 1 %}{% else %}{% assign n = n | plus: 2 %}{% endif %}
       {%- endfor %}
     </ol>
+    {%- endfor %}
   </div>
   <footer><span><strong>{{ site.title }}</strong></span><span>2</span></footer>
 </section>
 
-{%- for p in projects %}
-{%- assign n = forloop.index0 | times: 2 | plus: 3 %}
+{%- assign n = 3 %}
+{%- for f in fields %}
+{%- assign items = site.projects | where: 'field', f.key | sort: 'order' %}
+{%- capture edge %}<div class="edge"><b>{{ f.number }}</b>{{ f.title }}</div>{% endcapture %}
+
+<section class="sheet divider">
+  <div class="divider-text">
+    <p class="big-number">{{ f.number }}</p>
+    <h2>{{ f.title }}</h2>
+    <p class="lead">{{ f.lead }}</p>
+  </div>
+  <ol class="divider-grid" style="--count: {{ items.size }}">
+    {%- for p in items %}
+    <li><img src="{{ p.card | relative_url }}" alt=""><span><strong>{{ p.title }}</strong>{{ p.discipline }}</span></li>
+    {%- endfor %}
+  </ol>
+  <footer><span><strong>{{ site.title }}</strong> {{ f.title }}</span><span>{{ n }}</span></footer>
+</section>
+{%- assign n = n | plus: 1 %}
+
+{%- for p in items %}
 {%- assign cols = p.print.columns | default: 3 %}
 {%- assign rows = p.print.images.size | plus: cols | minus: 1 | divided_by: cols %}
 
-<section class="sheet intro">
-  <div class="intro-text">
+{%- if p.print.layout == 'single' %}
+<section class="sheet single">
+  {{ edge }}
+  <div class="single-text">
     <p class="discipline">{{ p.discipline }}</p>
     <h2>{{ p.title }}</h2>
     <p class="lead">{{ p.lead }}</p>
-    <dl class="facts">{% for f in p.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}</dl>
+    <dl class="facts">{% for x in p.facts %}<div><dt>{{ x.label }}</dt><dd>{{ x.value }}</dd></div>{% endfor %}</dl>
     {%- for note in p.print.notes %}
     <h3>{{ note.title }}</h3>
     {{ note.text | markdownify }}
     {%- endfor %}
   </div>
-  <figure class="intro-hero{% if p.hero_ratio %} whole{% endif %}"><img src="{{ p.hero | relative_url }}" alt=""></figure>
+  <div class="single-media" style="--n: {{ p.print.images.size }}">
+    <figure class="big"><img src="{{ p.hero | relative_url }}" alt=""></figure>
+    {%- for im in p.print.images %}
+    <figure><div class="frame"><img src="{{ im.src | relative_url }}" alt=""></div><figcaption>{{ im.caption }}</figcaption></figure>
+    {%- endfor %}
+  </div>
+  <footer><span><strong>{{ site.title }}</strong> {{ p.title }}</span><span>{{ n }}</span></footer>
+</section>
+{%- assign n = n | plus: 1 %}
+{%- else %}
+
+<section class="sheet intro">
+  {{ edge }}
+  <div class="intro-text">
+    <p class="discipline">{{ p.discipline }}</p>
+    <h2>{{ p.title }}</h2>
+    <p class="lead">{{ p.lead }}</p>
+    <dl class="facts">{% for x in p.facts %}<div><dt>{{ x.label }}</dt><dd>{{ x.value }}</dd></div>{% endfor %}</dl>
+    {%- for note in p.print.notes %}
+    <h3>{{ note.title }}</h3>
+    {{ note.text | markdownify }}
+    {%- endfor %}
+  </div>
+  <figure class="intro-hero{% if p.hero_ratio %} whole{% endif %}"><img src="{{ p.hero | relative_url }}" alt="">{% if p.hero_caption %}<figcaption>{{ p.hero_caption }}</figcaption>{% endif %}</figure>
   <footer><span><strong>{{ site.title }}</strong> {{ p.title }}</span><span>{{ n }}</span></footer>
 </section>
 
 <section class="sheet process{% if p.journey %} service{% endif %}">
+  {{ edge }}
   <header>
     <div><p class="discipline">{{ p.title }}</p><h2>{{ p.print.heading }}</h2></div>
     <p>{{ p.print.intro }}</p>
@@ -82,14 +141,22 @@ permalink: /print/
   {%- if p.journey %}
   <ol class="journey">{% for s in p.journey %}<li><h3>{{ s.title }}</h3><p>{{ s.text }}</p></li>{% endfor %}</ol>
   {%- endif %}
+  {%- if p.print.images.size > 0 %}
   <div class="grid" style="--cols: {{ cols }}; --rows: {{ rows }}">
     {%- for im in p.print.images %}
     <figure><div class="frame"><img src="{{ im.src | relative_url }}" alt=""></div><figcaption>{{ im.caption }}</figcaption></figure>
     {%- endfor %}
   </div>
+  {%- endif %}
   {%- if p.blueprint %}{% include blueprint.html rows=p.blueprint %}{% endif %}
+  {%- if p.print.personas %}
+  <ol class="print-personas">{% for x in p.print.personas %}<li><small>{{ x.tag }}</small><strong>{{ x.name }}</strong><p>{{ x.quote }}</p></li>{% endfor %}</ol>
+  {%- endif %}
   <footer><span><strong>{{ site.title }}</strong> {{ p.title }}</span><span>{{ n | plus: 1 }}</span></footer>
 </section>
+{%- assign n = n | plus: 2 %}
+{%- endif %}
+{%- endfor %}
 {%- endfor %}
 
 <section class="sheet back">

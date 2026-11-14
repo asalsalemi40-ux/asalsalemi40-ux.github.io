@@ -3,14 +3,15 @@
     <div class="content">
       <p class="kicker">Asal Salemi, industrial designer in Tehran</p>
       <h1>{{ site.tagline }}</h1>
-      <p class="intro">From user research and service blueprints to sketches, renders and full-scale prototypes. I am completing my B.Sc. in Industrial Design at Pars University of Art and Architecture.</p>
+      <p class="intro">I work in three fields: making objects by hand, designing services, and redesigning products and their packaging. I am completing my B.Sc. in Industrial Design at Pars University of Art and Architecture.</p>
       <ul class="actions">
         <li><a href="#work" class="button special">See the work</a></li>
         <li><a href="{{ site.portfolio_pdf | relative_url }}" class="button">Portfolio (PDF)</a></li>
+        {% if site.cv_pdf %}<li><a href="{{ site.cv_pdf | relative_url }}" class="button">CV (PDF)</a></li>{% endif %}
       </ul>
     </div>
     <figure class="hero-media">
-      {% include compare.html left="/assets/images/work/walker-z-sketch.jpg" right="/assets/images/work/walker-z-render.jpg" ratio="327 / 683" left_alt="Pencil sketch of a Z-shaped walking frame" right_alt="Render of the same Z-shaped walking frame in brushed aluminium" framed=true %}
-      <figcaption>Drag to compare sketch and render: Z-frame walker for older adults.</figcaption>
+      <a href="{{ '/work/bionic-form/' | relative_url }}" class="hero-link"><img class="hero-photo" src="{{ '/assets/images/work/bionic-form-front.jpg' | relative_url }}" alt="A faceted white-card form inspired by a flower, lit from inside, on a dark wooden table" width="1200" height="1500"></a>
+      <figcaption>Bionic form study: a flower turned into flat planes of white card.</figcaption>
     </figure>
   </section>

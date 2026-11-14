@@ -3,11 +3,11 @@ title: Asal Salemi
 subtitle: Industrial Designer
 tagline: I design products and the services around them.
 description: Portfolio of Asal Salemi, an industrial designer working across service, UX and product design.
-email: asalsalemi40@gmail.com
+email: asalsalemi1403@gmail.com
 location: Tehran, Iran
 contact_blurb: I'm looking for master's study and design roles in service design, UX and product design.
 portfolio_pdf: /assets/files/Asal_Salemi_Portfolio.pdf
-cv_pdf: # optional, e.g. /assets/files/Asal_Salemi_CV.pdf
+cv_pdf: /assets/files/Asal_Salemi_CV.pdf
 
 # Address of the site. Leave baseurl empty if the repository is named <username>.github.io.
 # If the repository has another name (e.g. "portfolio"), set baseurl: "/portfolio".
@@ -22,16 +22,28 @@ instagram_url:
 # Build settings
 markdown: kramdown
 collections:
+  # The three fields her work is grouped into; each gets a page at /work/<file name>/.
+  fields:
+    output: true
+    permalink: /work/:name/
   projects:
     output: true
     permalink: /work/:name/
+plugins:
+  - jekyll-redirect-from
 defaults:
+  - scope:
+      path: ""
+      type: fields
+    values:
+      layout: field
   - scope:
       path: ""
       type: projects
     values:
       layout: project
 exclude:
+  - _archive
   - README.md
   - LICENSE.md
   - Gemfile

@@ -8,14 +8,17 @@ Live at [asalsalemi40-ux.github.io](https://asalsalemi40-ux.github.io). Built wi
 | --- | --- |
 | Name, headline, email, location, contact line | `_config.yml` |
 | LinkedIn, Behance, Instagram icons | `_config.yml`: paste a full URL into `linkedin_url`, `behance_url` or `instagram_url` |
-| Projects (text, images, order) | `_projects/*.md`, one file per project; `order:` sets the position. Images live in `assets/images/work/` |
+| The three fields (title, intro, cover photo, order) | `_fields/*.md`; each field gets a page at `/work/<file name>/` |
+| Projects (text, images, order) | `_projects/*.md`, one file per project; `field:` puts it in a field (`making`, `service` or `product`) and `order:` sets its position inside the field. Images live in `assets/images/work/` |
+| Retired projects | `_archive/`: never built or published; see `_archive/README.md` to bring one back |
 | Gym Box journey and blueprint | `journey:` and `blueprint:` at the top of `_projects/gym-box.md` |
-| A project's two pages in the PDF | `print:` at the top of that project's file |
+| A project's pages in the PDF | `print:` at the top of that project's file: two sheets by default, one with `layout: single` |
+| Photos on the PDF cover | `_data/print.yml` |
 | About page | `about.md` |
 | Home page intro | `_includes/banner.html` |
 | CV download | add `assets/files/Asal_Salemi_CV.pdf`, then set `cv_pdf: /assets/files/Asal_Salemi_CV.pdf` in `_config.yml` |
 
-To add a project, copy one of the files in `_projects/`, give it a new file name (this becomes its web address) and a new `order:` number, and change its text and images.
+To add a project, copy one of the files in `_projects/`, give it a new file name (this becomes its web address), set its `field:` and `order:`, and change its text and images. It then appears on the home page, its field page, the menu and the PDF.
 
 ## Interactive pieces
 

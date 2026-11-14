@@ -1,9 +1,10 @@
+{%- assign support = include.rows | map: 'support' | compact | size -%}
 <div class="blueprint-wrap">
 <table class="blueprint">
-<thead><tr><th>Stage</th><th>User action</th><th>Touchpoint</th><th>Behind the scenes</th></tr></thead>
+<thead><tr><th>Stage</th><th>User action</th><th>Touchpoint</th><th>Behind the scenes</th>{% if support > 0 %}<th>Support systems</th>{% endif %}</tr></thead>
 <tbody>
 {%- for r in include.rows %}
-<tr><td data-label="Stage">{{ r.stage }}</td><td data-label="User action">{{ r.action }}</td><td data-label="Touchpoint">{{ r.touchpoint }}</td><td data-label="Behind the scenes">{{ r.backstage }}</td></tr>
+<tr><td data-label="Stage">{{ r.stage }}</td><td data-label="User action">{{ r.action }}</td><td data-label="Touchpoint">{{ r.touchpoint }}</td><td data-label="Behind the scenes">{{ r.backstage }}</td>{% if support > 0 %}<td data-label="Support systems">{{ r.support }}</td>{% endif %}</tr>
 {%- endfor %}
 </tbody>
 </table>
